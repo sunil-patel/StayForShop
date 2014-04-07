@@ -1,0 +1,19 @@
+{% extends "home/home.html" %}
+
+{% block content %}
+<div class="content">
+ <table width="100%" align="center">
+  <tr align="center"><td align="center">
+  <H3>Sign In</H3>
+  <form action="../../user/authentication/" method="POST">
+  	  {% csrf_token %}
+	  Username : <input class="textbox" type="text" name="username" /><br><br>
+	  Password : <input class="textbox password" type="password" name="password" /><br><br>
+	  <input class="shiny-button" type="submit" name="login" Value="Login" />
+  </form>
+  <h3 class="err_msg">{{ error }}</h2><br>
+  <h3 class="err_msg">{{ Reason }}</h2>
+  </td></tr>
+ </table>
+ </div>
+{% endblock %}

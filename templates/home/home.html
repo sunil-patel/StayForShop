@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<!--[if gte IE 7]>
+		<link rel="stylesheet" type="text/css" href="{% url 'home' %}statics/css/ie9.css" />
+	<![endif]-->
+    <link rel="stylesheet" href="{% url 'home' %}statics/css/style.css" />
+    <script type="text/javascript" src="{% url 'home' %}statics/js/main.js"></script>
+    <script type="text/javascript" src="{% url 'home' %}statics/js/jquery-1.11.0.min.js"></script>
+    
+    <!--[if lt IE 9]>  
+    <script type="text/javascript" src="{% url 'home' %}statics/js/jquery-1.9.0.js"></script>
+    <![endif]-->
+    
+ 
+    <script>
+		$(document).ready(function() 
+   		{
+			$("#new-in").mouseover(function() {
+				$("#newin-category").css('visibility', 'visible');
+            	$("#new-in").css('font-weight', 'bold');
+            	$("#men-category").css("visibility", "hidden");
+			});
+
+			$("#men").mouseover(function() {
+				$("#men-category").css('visibility', 'visible');
+				$("#men").css('font-weight', 'bold');
+			});
+			$("#men").mouseout(function() {
+				$("#men").css('font-weight', 'normal');
+			});
+			$("#women").mouseover(function() {
+				$("#newin-category").css('visibility', 'hidden');
+				$("#women").css('font-weight', 'bold');
+				$("#men-category").css("visibility", "hidden");
+			});
+			$("#women").mouseout(function() {
+				$("#women").css('font-weight', 'normal');
+			});
+			$("#kids").mouseover(function() {
+				$("#newin-category").css('visibility', 'hidden');
+				$("#kids").css('font-weight', 'bold');
+				$("#men-category").css("visibility", "hidden");
+			});
+			$("#kids").mouseout(function() {
+				$("#kids").css('font-weight', 'normal');
+			});
+			$("#sports").mouseover(function() {
+				$("#newin-category").css('visibility', 'hidden');
+				$("#sports").css('font-weight', 'bold');
+				$("#men-category").css("visibility", "hidden");
+			});
+			$("#sports").mouseout(function() {
+				$("#sports").css('font-weight', 'normal');
+			});
+			$("#homefashion").mouseover(function() {
+				$("#newin-category").css('visibility', 'hidden');
+				$("#homefashion").css('font-weight', 'bold');
+				$("#men-category").css("visibility", "hidden");
+			});
+			$("#homefashion").mouseout(function() {
+				$("#homefashion").css('font-weight', 'normal');
+			});
+			$("#designers").mouseover(function() {
+				$("#newin-category").css('visibility', 'hidden');
+				$("#designers").css('font-weight', 'bold');
+				$("#men-category").css("visibility", "hidden");
+			});
+			$("#designers").mouseout(function() {
+				$("#designers").css('font-weight', 'normal');
+			});
+			$("#sale").mouseover(function() {
+				$("#newin-category").css('visibility', 'hidden');
+				$("#sale").css('font-weight', 'bold');
+				$("#men-category").css("visibility", "hidden");
+			});
+			$("#sale").mouseout(function() {
+				$("#sale").css('font-weight', 'normal');
+			});
+   			$("#new-in").click(function() {
+            	$("#newin-category").css('visibility', 'visible');
+            	$("#new-in").css('font-weight', 'bold');
+            });
+   			$("#men").mouseover(function() {
+   				$("#newin-category").css('visibility', 'hidden');
+   				$("#new-in").css('font-weight', 'normal');
+   			});
+   			$(".itemlink").mouseover(function() {
+   				$(this).css('color','blue');
+   			})
+   			$(".itemlink").mouseout(function() {
+   				$(this).css('color','#878e83');
+   			})
+   			$(".itemlink").click(function() {
+   				$("#newin-category").css('visibility', 'hidden');
+   				$("#new-in").css('font-weight', 'normal');
+   			});
+   			$("#newin-category").mouseover(function() {
+   				$("#newin-category").css('visibility', 'visible');
+   				$("#new-in").css('font-weight', 'bold');
+   			});
+   			$("#newin-category").mouseout(function() {
+   				$("#newin-category").css('visibility', 'hidden');
+   				$("#new-in").css('font-weight', 'normal');
+   			});
+   			$(".menitemlink").each(function() {
+   				$(this).mouseover(function() {
+   					$(this).removeClass("deselectmenu");
+   					$(this).addClass("selectmenu");
+   					/*if($(this).attr('id') == "men1") {
+   						$("#shoes-category").css('visibility', 'visible');
+   					}
+   					else {
+   						$("#shoes-category").css('visibility', 'hidden');
+   					}*/
+   				});
+   				$(this).mouseout(function() {
+   	   				$(this).removeClass("selectmenu");
+   	   				$(this).addClass("deselectmenu");
+   	   			});
+   				$(this).click(function() {
+   					$("#men-category").css("visibility", "hidden");
+   					$.ajax({
+   						type : "GET",
+   						url : "category/",
+   						success: function(response){
+  		                        $("#content").html(response);
+   		                }
+   					});
+   				});
+   			});
+   			$("#men-category").mouseover(function() {
+   				$(this).css("visibility", "visible");
+   			});
+   			$("#men-category").mouseout(function() {
+   				$(this).css("visibility", "hidden");
+   			});
+   			$("#shoes-category").mouseover(function() {
+   				$("#men1").removeClass("deselectmenu");
+   				$("#men1").addClass("selectmenu");
+   				/*$("#shoes-category").css('visibility', 'visible');*/
+   			});
+   			/*$("#shoes-category").mouseout(function() {
+   				$("#men1").removeClass("selectmenu");
+   				$("#men1").addClass("deselectmenu");
+   			});*/
+        });
+
+    </script>
+    <title>{% block title %}Stay For Shop{% endblock %}</title>
+</head>
+<body>
+{% block header %}
+
+<table width="100%"><tr><td>
+<div>
+	<div style="float:left;">
+		<img src="{% url 'home' %}statics/Images/logo/sfs_logo.png" width=300 /> 
+	</div>
+	<!-- div class="searchicondiv">
+		<img src="{% url 'home' %}statics/Images/logo/search_image.png" height="30"/>
+	</div--> 
+	<div class="searchdiv">
+		<input class="textboxSearch" type="search" name="search_txt" placeholder="e.g. Item or Category Name" />
+	</div>
+	<div style="float:right;">
+		{% if request.session.username != None %}
+			<h3>Hi {{ user.first_name }} !</h3><a href="{% url 'logout' %}">Logout</a>
+		{% else %}
+			<a href="{% url 'signup' %}">Sign up</a> | <a href="{% url 'login' %}">Sign In</a>
+		{% endif %}
+	</div>
+</div>
+</td></tr></table>
+{% endblock %}
+
+{% block menu %}
+<div id="menuheading">
+	<div id="new-in" class="mainmenu">NEW IN</div>
+	<div id="men" class="mainmenu">MEN</div>
+	<div id="women" class="mainmenu">WOMEN</div>
+	<div id="kids" class="mainmenu">KIDS</div>
+	<div id="sports" class="mainmenu">SPORTS</div>
+	<div id="homefashion" class="mainmenu">HOME FASHION</div>
+	<div id="designers" class="mainmenu">DESIGNERS</div>
+	<div id="sale" class="mainmenu">SALE</div>
+</div>
+
+<!-- --------------------------------------New-in Menu -------------------------------->
+<div id="newin-category" style="visibility:hidden">
+	<div id="sub-category">&nbsp;
+		<div class="bold-font">Men</div>
+		<div>&nbsp;</div>
+		<div class="itemlink">Shoes</div>
+		<div class="itemlink">Clothes</div>
+		<div class="itemlink">Accessories</div>
+		<div class="itemlink">Watches</div>
+		<div class="itemlink">Bags</div>
+		<div class="itemlink">Fragrances</div>
+		<div class="itemlink">Jewellery</div>
+	</div>
+	<div id="sub-category">&nbsp;
+		<div class="bold-font">Women</div>
+		<div>&nbsp;</div>
+		<div class="itemlink">Shoes</div>
+		<div class="itemlink">Clothes</div>
+		<div class="itemlink">Accessories</div>
+		<div class="itemlink">Jewellery</div>
+		<div class="itemlink">Buauty</div>
+		<div class="itemlink">Bags</div>
+		<div class="itemlink">Jewellery</div>
+		<div class="itemlink">Fragrances</div>
+	</div>
+	<div id="sub-category">&nbsp;
+		<div class="bold-font">Kids</div>
+		<div>&nbsp;</div>
+		<div class="itemlink">Shoes</div>
+		<div class="itemlink">Boyes Clothing</div>
+		<div class="itemlink">Girls Clothing</div>
+		<div class="itemlink">Toys</div>
+		<div class="itemlink">Accessories</div>
+		<div class="itemlink">Bags</div>
+	</div>
+	<div id="sub-category">&nbsp;
+		<div class="bold-font">Home & Furniture</div>
+		<div>&nbsp;</div>
+		<div class="itemlink">Furniture</div>
+		<div class="itemlink">Furnishing</div>
+		<div class="itemlink">Home Decor</div>
+		<div class="itemlink">Kitchen</div>
+	</div>
+	<div id="sub-category">&nbsp;
+		<div class="bold-font">Sports</div>
+		<div>&nbsp;</div>
+		<div class="itemlink">Shoes</div>
+		<div class="itemlink">Clothing</div>
+		<div class="itemlink">Bags</div>
+		<div class="itemlink">Equipment</div>
+	</div>
+</div>
+<!-------------------------------- End --------------------------------->
+
+<!-------------------------------- Men menu --------------------------------->
+<div id="men-category" style="visibility:hidden">
+	<table class="tableclass">
+		<tr class="tableclass"><td class="tdclass">
+		<div id="mensub-category">
+			<div id="men1" class="menitemlink"><a href="{% url '' %}">Shoes</a></div>
+			<div id="men2" class="menitemlink">Clothes</div>
+			<div id="men3" class="menitemlink">Accessories</div>
+			<div id="men4" class="menitemlink">Watches</div>
+			<div id="men5" class="menitemlink">Bags</div>
+			<div id="men6" class="menitemlink">Fragrances</div>
+			<div id="men7" class="menitemlink">Jewellery</div>
+			<div id="men8" class="menitemlink">Sunglasses</div>
+		</div>
+	</td>
+	<!--  td class="tdclass item">
+		<div id="shoes-category" style="visibility:hidden">
+			<div class="bold-font">Shop by Categaory</div>
+			<div>&nbsp;</div>
+			<div class="itemlink">Casual Shoes</div>
+			<div class="itemlink">Sneakers</div>
+			<div class="itemlink">Formal Shoes</div>
+			<div class="itemlink">Running Shoes</div>
+			<div class="itemlink">Sandals</div>
+			<div class="itemlink">Floaters</div>
+			<div class="itemlink">Slippers</div>
+			<div class="itemlink">Flipflops</div>
+			<div class="itemlink">Boots</div>
+			<div class="itemlink">Outdoor & Hiking</div>
+			<div class="itemlink">Football Shoes</div>
+			<div class="itemlink">Basketball shoes</div>
+		</div>
+	</td-->
+	</tr>
+	</table>
+</div>
+<!-------------------------------- End --------------------------------->
+{% endblock %}
+{% block content %}
+<div id="content"></div>
+<!-- H3>Products</H3>
+<a href="/products/t-shirt/">T-Shirts</a><br>
+<a href="{% url 'checkout' %}">Checkout</a> -->
+{% endblock %}
+</body>
+</html>

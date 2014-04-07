@@ -1,0 +1,43 @@
+{% extends "home/home.html" %}
+
+{% block content %}
+<div class="content">
+  	<H3>Sign Up</H3>
+  	{% if message %}
+  		<div style="padding-left:120px;color:white;background-color:red;">{{ message }}</div>
+  	{% endif %}
+  	<form action="{% url 'register' %}" method="POST">
+  		{% csrf_token %}
+		<div style="margin:10px;">
+			<label style="padding-left:75px;">Name</label> 
+			<input class="textbox" type="text" name="first_name" value="{{ first_name }}" placeholder="First Name"/>
+			<input class="textbox" type="text" name="last_name" value="{{ last_name }}"  placeholder="Last Name"/>
+		</div>
+			
+		<div style="margin:10px;">
+			<label style="padding-left:50px;">Username</label> 
+			<input class="textbox email" type="text" name="email" value="{{ email }}" placeholder="example@example.com" />
+		</div>
+		<div style="margin:10px;">
+			<label style="padding-left:50px">Password</label>
+			<input class="textbox password" type="password" name="password" placeholder="Password" />
+			<input class="textbox password" type="password" name="conf_pass" placeholder="Confirm Password" />
+			<div style="padding-left:120px;color:red">{{ pass_error }}</div>
+		</div>
+		<div style="margin:10px;">
+			<label style="padding-left:70px">Mobile</label>
+			<input class="textbox" type="text" name="mobile" value="{{ mobile }}" placeholder="Mobile No" />
+		</div>
+		<div style="margin-left:50px;padding-left:25px;">
+			<label style="padding-left:0px">Gender</label>
+			<input class="" type="radio" name="gender" checked />Male
+			<input class="" type="radio" name="gender" /> Female
+		</div>
+		<div style="margin:50px;padding-left:75px;">
+			<input class="shiny-button" type="submit" name="sign_up" Value="Sign Up" />
+		</div>
+		
+	</form>
+	
+ </div>
+{% endblock %}
