@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<!-- script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script-->
+	<!-- script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js" type="text/javascript"></script-->
+  <!-- script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/additional-methods.js" type="text/javascript"></script-->
+    <!-- script type="text/javascript" src="{% url 'home' %}statics/js/jquery-1.11.0.min.js"></script-->
 	
 	<!--[if gte IE 7]>
 		<link rel="stylesheet" type="text/css" href="{% url 'home' %}statics/css/ie9.css" />
 	<![endif]-->
+	
     <link rel="stylesheet" href="{% url 'home' %}statics/css/style.css" />
     <script type="text/javascript" src="{% url 'home' %}statics/js/main.js"></script>
-    <script type="text/javascript" src="{% url 'home' %}statics/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="{% url 'home' %}statics/js/jquery.min.js"></script>
+    <script type="text/javascript" src="{% url 'home' %}statics/js/jquery-validate.min.js"></script>
+    <script type="text/javascript" src="{% url 'home' %}statics/js/additional-methods.js"></script>
     
     <!--[if lt IE 9]>  
     <script type="text/javascript" src="{% url 'home' %}statics/js/jquery-1.9.0.js"></script>
@@ -123,7 +130,7 @@
    					$("#men-category").css("visibility", "hidden");
    					$.ajax({
    						type : "GET",
-   						url : "category/",
+   						url : "men/",
    						success: function(response){
   		                        $("#content").html(response);
    		                }
@@ -145,6 +152,8 @@
    				$("#men1").removeClass("selectmenu");
    				$("#men1").addClass("deselectmenu");
    			});*/
+   			
+			
         });
 
     </script>
@@ -246,7 +255,7 @@
 	<table class="tableclass">
 		<tr class="tableclass"><td class="tdclass">
 		<div id="mensub-category">
-			<div id="men1" class="menitemlink"><a href="{% url '' %}">Shoes</a></div>
+			<div id="men1" class="menitemlink"><a href="men/">Shoes</a></div>
 			<div id="men2" class="menitemlink">Clothes</div>
 			<div id="men3" class="menitemlink">Accessories</div>
 			<div id="men4" class="menitemlink">Watches</div>

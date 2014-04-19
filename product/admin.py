@@ -1,6 +1,15 @@
 from django.contrib import admin
-from product.models import Products, Categories
+from product.models import Product, Category, MainCategory, SubCategory
 
+class MainCategoryAdmin(admin.ModelAdmin):
+    list_display = ("MainCatID", "CategoryName")
+    
+admin.site.register(MainCategory, MainCategoryAdmin)
+
+class SubCategoryAdmin(admin.ModelAdmin):
+    list_display = ("SubCatID", "MainCatID", "CategoryName")
+    
+admin.site.register(SubCategory, SubCategoryAdmin)
     
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ("CategoryID",
@@ -9,7 +18,7 @@ class CategoryAdmin(admin.ModelAdmin):
                      "Picture",
                      "Active")
 
-admin.site.register(Categories, CategoryAdmin)
+admin.site.register(Category, CategoryAdmin)
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -42,4 +51,4 @@ class ProductAdmin(admin.ModelAdmin):
                     "Note"]
    
     
-admin.site.register(Products, ProductAdmin)
+admin.site.register(Product, ProductAdmin)

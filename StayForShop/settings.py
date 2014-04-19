@@ -19,7 +19,7 @@ DATABASES = {
         # The following settings are not used with sqlite3:
         'USER': 'root',
         'PASSWORD': 'root',
-        'HOST': '192.168.0.153',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'HOST': '127.0.0.1',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '3306',                      # Set to empty string for default.
     }
 }
@@ -142,6 +142,7 @@ INSTALLED_APPS = (
     'product',
     'paypal',
     'supplier',
+    'Order',
     
 )
 HOSTNAME = "http://127.0.0.1:8000"

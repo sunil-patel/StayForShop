@@ -1,32 +1,68 @@
 {% extends "home/home.html" %}
 
 {% block content %}
+<script>
+$(document).ready(function(){
+	$("#signup").validate({
+		rules : {
+			first_name: "required",
+			last_name: "required",
+			mobile: "required",
+			password: "required",
+			conf_pass: "required",
+			email: {
+				required: true,
+				email: true
+			}
+		},
+		messages: {
+			email: {
+				email:"Invalid Email Address"
+			}
+		},
+		submitHandler: function(form) {
+            form.submit();
+        }
+	});
+});
+
+</script>
 <div class="content">
   	<H3>Sign Up</H3>
   	{% if message %}
   		<div style="padding-left:120px;color:white;background-color:red;">{{ message }}</div>
   	{% endif %}
-  	<form action="{% url 'register' %}" method="POST">
+  	<form action="{% url 'register' %}" id="signup" method="POST">
   		{% csrf_token %}
-		<div style="margin:10px;">
-			<label style="padding-left:75px;">Name</label> 
-			<input class="textbox" type="text" name="first_name" value="{{ first_name }}" placeholder="First Name"/>
-			<input class="textbox" type="text" name="last_name" value="{{ last_name }}"  placeholder="Last Name"/>
+  		
+		<div class="signupform" style="margin:10px;">
+			<label style="padding-left:45px;">First Name</label>
+			<input class="textbox" type="text" id="fname" name="first_name" value="{{ first_name }}" placeholder="First Name"/>
 		</div>
-			
-		<div style="margin:10px;">
+		
+		<div class="signupform" style="margin:10px;display:block;">
+			<label style="padding-left:45px;">Last Name</label>	
+			<input class="textbox" type="text" id="lname" name="last_name" value="{{ last_name }}"  placeholder="Last Name"/>
+		</div>
+		
+		<div class="signupform" id="user" style="margin:10px;">
 			<label style="padding-left:50px;">Username</label> 
-			<input class="textbox email" type="text" name="email" value="{{ email }}" placeholder="example@example.com" />
+			<input class="textbox email" id="email" type="text" name="email" onblur="" value="{{ email }}" placeholder="example@example.com" />
 		</div>
-		<div style="margin:10px;">
-			<label style="padding-left:50px">Password</label>
-			<input class="textbox password" type="password" name="password" placeholder="Password" />
-			<input class="textbox password" type="password" name="conf_pass" placeholder="Confirm Password" />
+		<div class="signupform" style="margin:10px;">
+			<label style="padding-left:53px">Password</label>
+			<input class="textbox password" id="pass" type="password" name="password" placeholder="Password" />
+		</div>
+		<div class="signupform" style="margin:10px;">
+			<label style="padding-left:0px">Re-enter Password</label>
+			<input class="textbox password" id="cpass" type="password" name="conf_pass" placeholder="Confirm Password" />
 			<div style="padding-left:120px;color:red">{{ pass_error }}</div>
 		</div>
-		<div style="margin:10px;">
+		
+		<div class="signupform" style="margin:10px;">
 			<label style="padding-left:70px">Mobile</label>
 			<input class="textbox" type="text" name="mobile" value="{{ mobile }}" placeholder="Mobile No" />
+			<label id="errmobile" style="color:red;visibility:hidden;">* Mobile Number is required</label>
 		</div>
 		<div style="margin-left:50px;padding-left:25px;">
 			<label style="padding-left:0px">Gender</label>
@@ -34,8 +70,10 @@
 			<input class="" type="radio" name="gender" /> Female
 		</div>
 		<div style="margin:50px;padding-left:75px;">
-			<input class="shiny-button" type="submit" name="sign_up" Value="Sign Up" />
+			<input class="shiny-button" type="submit" name="sign_up" Value="Sign Up" id="submit" />
+			<label style="padding-left:10px;">Already registered? <a href="{% url 'login' %}">Sign in.</a></label>
 		</div>
+		<div style="float:left;"></div>
 		
 	</form>
 	

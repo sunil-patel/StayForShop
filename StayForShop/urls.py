@@ -12,7 +12,8 @@ urlpatterns = patterns('',
     url(r'^cart/$', 'cart.views.cart_details', name="cart"),
     url(r'^payment/', include('paypal.urls')),
     url(r'^checkout/$', 'StayForShop.views.paypal', name='checkout'),
-    url(r'^category/$', 'StayForShop.views.showMenCategory'),
+    url(r'^men/$', 'StayForShop.views.showMenCategory', name="men"),
+    url(r'^men/shoes/$', 'StayForShop.views.showMenShoes'),
     
     #url(r'^checkout/', include('paypal_express_checkout.urls')),
     
