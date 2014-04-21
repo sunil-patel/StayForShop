@@ -128,9 +128,10 @@
    	   			});
    				$(this).click(function() {
    					$("#men-category").css("visibility", "hidden");
+   					alert('hi');
    					$.ajax({
    						type : "GET",
-   						url : "men/",
+   						url : "men/",  /* shoes */
    						success: function(response){
   		                        $("#content").html(response);
    		                }
@@ -152,7 +153,16 @@
    				$("#men1").removeClass("selectmenu");
    				$("#men1").addClass("deselectmenu");
    			});*/
-   			
+   			$("#men").click(function() {
+				$("#men-category").css("visibility", "hidden");
+				$.ajax({
+					type : "GET",
+					url : "men/",
+					success: function(response){
+	                        $("#content").html(response);
+	                }
+				});
+			});
 			
         });
 
@@ -255,7 +265,7 @@
 	<table class="tableclass">
 		<tr class="tableclass"><td class="tdclass">
 		<div id="mensub-category">
-			<div id="men1" class="menitemlink"><a href="men/">Shoes</a></div>
+			<div id="men1" class="menitemlink"><a href="men/shoes">Shoes</a></div>
 			<div id="men2" class="menitemlink">Clothes</div>
 			<div id="men3" class="menitemlink">Accessories</div>
 			<div id="men4" class="menitemlink">Watches</div>

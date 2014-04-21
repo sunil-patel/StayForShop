@@ -4,7 +4,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = patterns ('',
     # Examples:
     url(r'^$', 'StayForShop.views.home', name='home'),
     url(r'^user/', include('Users.urls')),
@@ -12,8 +12,9 @@ urlpatterns = patterns('',
     url(r'^cart/$', 'cart.views.cart_details', name="cart"),
     url(r'^payment/', include('paypal.urls')),
     url(r'^checkout/$', 'StayForShop.views.paypal', name='checkout'),
-    url(r'^men/$', 'StayForShop.views.showMenCategory', name="men"),
-    url(r'^men/shoes/$', 'StayForShop.views.showMenShoes'),
+    url(r'^(?P<mainCategory>\w*?)/((?P<category>\w*?)/)?$', 'StayForShop.views.showCategory'),
+    #url(r'^men/shoes/$', 'StayForShop.views.showMenShoes', name="shoes"),
+    #url(r'^men/bags/$', 'StayForShop.views.showMenShoes', name="bags"),
     
     #url(r'^checkout/', include('paypal_express_checkout.urls')),
     

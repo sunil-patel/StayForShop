@@ -13,10 +13,22 @@
 			<img alt="" src="{% url 'home' %}statics/Images/shoes/men-sneaker.jpg" width="">
 			Sneakers
 		</div-->
-		{% for subCategory in subCategories %}
-			{% for sublnk, subCat in subCategory.items %}
-				<a href="{{ sublnk|lower }}"><div class="shoes-category">{{ subCat }}</div></a>
+		{% if Categories %}
+			{% for subCategory in Categories %}
+			 	<a href="{{ subCategory.CategoryName|lower }}">
+			 		<div class="shoes-category">{{ subCategory.CategoryName }}
+			 		<img alt="" src="{% url 'home' %}statics/{{ subCategory.Picture }}" width="150" height="180">
+			 		</div>
+			 	</a>
+			 {% endfor %}	
+		{% endif %}
+		{% if Categories = none %}
+			{% for subCategory in subCategories %}
+				{% for sublnk, subCat in subCategory.items %}
+					<a href="{{ sublnk|lower }}"><div class="shoes-category">{{ subCat }}</div></a>
+				{% endfor %}
 			{% endfor %}
-		{% endfor %}
+		{% endif %}
+		
 	</div>
 {% endblock %}
