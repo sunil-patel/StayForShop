@@ -11,6 +11,7 @@ from django.contrib.auth import logout
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from Users.models import Customer
+from product.models import SubCategory, MainCategory, Category
 
 def set_cookie(response, key, value, days_expire = 7):
     if days_expire is None:
@@ -33,7 +34,7 @@ def authentication(request):
         
         # Redirect to a success page.
         #return HttpResponseRedirect("/", request)
-        return render_to_response("home/home.html", context_instance=RequestContext(request))
+        return redirect("/", context_instance=RequestContext(request))
     else:
         # Show an error page
         return render_to_response("home/login.html", 
@@ -107,7 +108,5 @@ def register(request):
     auth.login(request, user)
     request.session["username"] = request.POST["email"]
     request.session["firstname"] = request.POST["first_name"]
-    
-    return render_to_response("home/home.html", context_instance=RequestContext(request))
 
-    
+  

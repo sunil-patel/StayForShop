@@ -2,14 +2,25 @@
 
 body { 
 	margin-top: 0px; 
-	margin-right: 200px; 
+	margin-right: 100px; 
 	margin-bottom: 0px; 
-	margin-left: 200px;
+	margin-left: 100px;
 	color: #878e83;
 	font-family: 'Ubuntu Condensed', sans-serif;
 	font-size: 10pt; 
 }
 
+a {
+	text-decoration: none; 
+}
+/*a:visited 
+{
+	color: #878e83; 
+	text-decoration:none;
+}
+
+a:hover {color: blue;}
+*/
 .mainmenu {
 	margin:6px 20px 0px 10px;
 	float:left;
@@ -269,3 +280,85 @@ body {
   background-image: -ms-linear-gradient(top, #47647e 0%, #50718F 100%);
   padding: 8.2px 18px 6.199999999999999px 18px;
 }
+
+.prod_info {
+	font-family: 'Ubuntu Condensed', sans-serif;
+	font-size: 10pt;
+	margin-left:250px;
+	color: black;
+}
+
+/* smart image enlarger starts here */
+/* If your images are not linking to other pages leave the links as <a href="#nogo"> Otherwise enlarger won't work in IE6 */
+
+.ienlarger {
+	float: left;
+	clear: none; /* set to left or right if needed */
+	padding-bottom: 5px; /* space between thumbs. Don't change this to margin */
+	padding-right: 5px; /* space between thumbs and wrapping text when there is any text around it */
+	height:200px;
+	width:200px;
+	border-style:solid;
+	border-width:1px;
+}
+
+.ienlarger a { 
+	display:block;
+	text-decoration: none;
+/* add cursor:default; to this rule to disable the hand cursor */
+}
+
+.ienlarger a:hover{ /* don't move this positioning to normal state */
+ 	position:relative;
+}
+
+.ienlarger span img {
+	border: 1px solid #FFFFFF; /* adds a border around the image */
+	margin-bottom: 8px; /* pushes the text down from the image */
+}
+
+.ienlarger a span {  /* this is for the large image and the caption */
+	position: absolute;
+	display:none;
+	color: #FFCC00; /* caption text colour */
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px; /* caption text size */
+	background-color: #000000;
+	font-weight: bold;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+
+.ienlarger img { /* leave or IE puts a border around links */
+border-width: 1;
+}
+
+.ienlarger a:hover span { 
+	display:block;
+	top: 50px; /* means the pop-up's top is 50px away from thumb's top */
+	left: 90px; /* means the pop-up's left is 90px far from the thumb's left */
+	z-index: 100;
+	
+/* If you want the pop-up open to the left of thumb, remove the left: 90px; and add  
+right: 90px; This would mean the right side of the pop-up is 90px far from the right side of thumb */	
+
+/* If you want the pop-up open above the thumb, remove the top: 50px; and add  
+bottom: 50px; This would mean the bottom of the pop-up is 50px far from the bottom of thumb */	
+
+/* add cursor:default; to this rule to disable the hand cursor only for the large image */
+}
+
+.resize_thumb {
+	width: 200px; /* enter desired thumb width here */
+	height : auto;
+}
+
+.resize_large {
+	width: 400px; /* enter desired thumb width here */
+	height : auto;
+}
+
+/* smart image enlarger ends here */

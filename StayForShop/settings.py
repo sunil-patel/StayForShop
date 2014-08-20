@@ -60,15 +60,16 @@ MEDIA_ROOT = BASE_DIR + "/StayForShop/templates"
 # Examples: "http://example.com/media/", "http://media.example.com/"
 MEDIA_URL = ''
 
+# URL prefix for static files.
+# Example: "http://example.com/static/", "http://static.example.com/"
+STATIC_URL = '/statics/'
+
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = os.path.join(BASE_DIR, STATIC_URL.strip("/"))
 
-# URL prefix for static files.
-# Example: "http://example.com/static/", "http://static.example.com/"
-STATIC_URL = '/statics/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -79,6 +80,8 @@ STATICFILES_DIRS = (
     BASE_DIR + "/StayForShop/templates",
 )
 
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -137,15 +140,16 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-    'cart',
-    'Users',
-    'product',
-    'paypal',
-    'supplier',
-    'Order',
+    'StayForShop',
+    #'cart',
+    #'Users',
+    #'product',
+    #'paypal',
+    #'supplier',
+    #'Order',
     
 )
-HOSTNAME = "http://127.0.0.1:8000"
+HOSTNAME = "http://127.0.0.1:80"
 
 PAYPAL_API_URL = 'https://api-3t.sandbox.paypal.com/nvp'
 PAYPAL_LOGIN_URL = (

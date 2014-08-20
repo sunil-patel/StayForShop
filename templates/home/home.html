@@ -20,9 +20,9 @@
     <script type="text/javascript" src="{% url 'home' %}statics/js/jquery-1.9.0.js"></script>
     <![endif]-->
     
- 
     <script>
-		$(document).ready(function() 
+    
+   		$(document).ready(function() 
    		{
 			$("#new-in").mouseover(function() {
 				$("#newin-category").css('visibility', 'visible');
@@ -128,10 +128,9 @@
    	   			});
    				$(this).click(function() {
    					$("#men-category").css("visibility", "hidden");
-   					alert('hi');
    					$.ajax({
    						type : "GET",
-   						url : "men/",  /* shoes */
+   						url : "products/men/",  /* shoes */
    						success: function(response){
   		                        $("#content").html(response);
    		                }
@@ -153,20 +152,33 @@
    				$("#men1").removeClass("selectmenu");
    				$("#men1").addClass("deselectmenu");
    			});*/
-   			$("#men").click(function() {
+   			/*$("#men").click(function() {
 				$("#men-category").css("visibility", "hidden");
 				$.ajax({
 					type : "GET",
-					url : "men/",
+					url : "products/men/",
 					success: function(response){
 	                        $("#content").html(response);
 	                }
 				});
-			});
+			});*/
 			
         });
+		
+		/* Image resize */
+		var countries=new ddtabcontent("countrytabs")
+		countries.setpersist(true)
+		countries.setselectedClassTarget("link") //"link" or "linkparent"
+		countries.init()
+		
+		
+		
 
     </script>
+    
+    
+    
+<script></script>
     <title>{% block title %}Stay For Shop{% endblock %}</title>
 </head>
 <body>
@@ -197,7 +209,7 @@
 {% block menu %}
 <div id="menuheading">
 	<div id="new-in" class="mainmenu">NEW IN</div>
-	<div id="men" class="mainmenu">MEN</div>
+	<div id="men" class="mainmenu"><a href="{% url 'men' 'men' %}">MEN</a></div>
 	<div id="women" class="mainmenu">WOMEN</div>
 	<div id="kids" class="mainmenu">KIDS</div>
 	<div id="sports" class="mainmenu">SPORTS</div>
@@ -211,13 +223,13 @@
 	<div id="sub-category">&nbsp;
 		<div class="bold-font">Men</div>
 		<div>&nbsp;</div>
-		<div class="itemlink">Shoes</div>
-		<div class="itemlink">Clothes</div>
-		<div class="itemlink">Accessories</div>
-		<div class="itemlink">Watches</div>
-		<div class="itemlink">Bags</div>
-		<div class="itemlink">Fragrances</div>
-		<div class="itemlink">Jewellery</div>
+		<div class="itemlink"><a href="{% url 'mshoes' 'men' 'shoes' %}">Shoes</a></div>
+		<div class="itemlink"><a href="{% url 'mclothes' 'men' 'clothes' %}">Clothes</a></div>
+		<div class="itemlink"><a href="{% url 'maccess' 'men' 'accessories' %}">Accessories</a></div>
+		<div class="itemlink"><a href="{% url 'mwatch' 'men' 'watches' %}">Watches</a></div>
+		<div class="itemlink"><a href="{% url 'mbags' 'men' 'bags' %}">Bags</a></div>
+		<div class="itemlink"><a href="{% url 'mfrag' 'men' 'fragrances' %}">Fragrances</a></div>
+		<div class="itemlink"><a href="{% url 'mjewell' 'men' 'jewellery' %}">Jewellery</a></div>
 	</div>
 	<div id="sub-category">&nbsp;
 		<div class="bold-font">Women</div>
@@ -265,7 +277,7 @@
 	<table class="tableclass">
 		<tr class="tableclass"><td class="tdclass">
 		<div id="mensub-category">
-			<div id="men1" class="menitemlink"><a href="men/shoes">Shoes</a></div>
+			<div id="men1" class="menitemlink"><a href="{% url 'mshoes' 'men' 'shoes' %}">Shoes</a></div>
 			<div id="men2" class="menitemlink">Clothes</div>
 			<div id="men3" class="menitemlink">Accessories</div>
 			<div id="men4" class="menitemlink">Watches</div>

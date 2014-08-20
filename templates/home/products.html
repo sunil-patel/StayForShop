@@ -1,14 +1,38 @@
-<html>
-<head>
-</head>
-<body>
-<h1>Stay For Shop</h1><br>
-<H3>T-Shirt</H3>
-<img src="" height="300" width="300"/>
-<p>Polo T-Shirt</p>
-This is the product with good material and feel comfort.<br>
-<b>Price : Rs. 1000</b><br>
-<b>Size : XL</b>
-<br><a href="../../cart/">ADD TO CART</a>
-</body>
-</html>
+{% extends "home/home.html" %}
+
+{% block content %}
+
+	{% if product_list %}
+		{% for products in product_list %}
+			<a href="{{ products.ProductID }}">
+				<div class="shoes-category">
+					{{ products.ProductName }}
+					<img alt="" src="{% url 'home' %}statics/{{ products.Picture }}" width="150" height="180">
+				</div>
+			</a>
+		{% endfor%}
+	{% else %}
+		<div style="margin-top: 10px;width:100%">
+			<div id="country1">
+				<div class="ienlarger">
+					<a href="#"><img src="{% url 'home' %}statics/{{ product_info.Picture }}" alt="thumb" class="resize_thumb" />
+					<span>
+				    	<img src="{% url 'home' %}statics/{{ product_info.Picture }}" alt="large" class="resize_large" /><br />
+				    </span>
+				    </a>
+				</div>
+			</div>
+			<div class="prod_info" style="margin-top:10px;font-size: 15pt; "><u>{{ product_info.ProductDescription|capfirst }}</u></div><br>
+			<div class="prod_info"><b>Item Name : </b>{{ product_info.ProductName|capfirst }}</div>
+			<div class="prod_info" style="margin-top:10px;font-size: 10pt; "><b>Price : </b> {{ product_info.UnitPrice }}</div>
+			<div class="prod_info" style="margin-top:10px;font-size: 10pt; "><b>Quantity :</b>
+				<input type="text" name="txt_qty" value="1" size=5 />
+			</div>
+		</div>
+		<div class="prod_info">
+			<br><input class="shiny-button" type="button" name="btn_buy" value="BUY NOW" /><br><br>
+			<br><input class="shiny-button" type="button" name="btn_atc" value="Add TO CART"/>
+		</div>
+	{% endif %}
+
+{% endblock %}

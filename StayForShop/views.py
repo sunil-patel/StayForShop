@@ -1,6 +1,9 @@
+
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from product.models import SubCategory, MainCategory, Category
+from models import AuthorForm, Author, Book, CustomerForm
+from django.forms.models import modelform_factory
+from django.forms.formsets import formset_factory
 
 def home(request):
     return render_to_response("home/home.html", context_instance=RequestContext(request))
@@ -8,25 +11,35 @@ def home(request):
 def paypal(request):
     return render_to_response("paypal/setcheckout.html", context_instance=RequestContext(request))
 
-def showCategory(request, mainCategory="men", category="shoes"):
-    print category
-    if len(mainCategory) > 0:
-        mc = MainCategory.objects.get(CategoryName=mainCategory)
-        sc = SubCategory.objects.filter(MainCatID = mc.MainCatID)
-        sclists = []
-        sclist = {}
-        for subCat in sc:
-            sclist[subCat.CategoryName.replace("men ", "")+"/"] = subCat.CategoryName.replace("men ", "")
-    
-        sclists.append(sclist)
-        
-    
-    if category is not None:
-        sc = SubCategory.objects.filter(CategoryName=category, MainCatID=mc.pk)
-        cat = Category.objects.filter(MainCatID=mc.pk, SubCatID=sc.values()[0]['SubCatID'])
-        print cat.values()
-        return render_to_response("home/category.html", {'Categories' : cat,}, context_instance=RequestContext(request))
-    return render_to_response("home/category.html", {'subCategories' : sclists,}, context_instance=RequestContext(request))
 
-#def showMenShoes(request):
-#    return render_to_response("home/category.html", context_instance=RequestContext(request))
+def test_form(request):
+    
+    #form = formset_factory(AuthorForm);
+    form = formset_factory(CustomerForm)
+    #name = form.cleaned_data['name']
+    #title = form.cleaned_data['title']
+    #print form.as_p()
+    return render_to_response("home/temp.html", {'form': form}, context_instance=RequestContext(request))
+
+def test_form_save(request):
+    if request.method == "GET":
+        #form = AuthorForm()
+        form = formset_factory(CustomerForm)
+    else:
+        #form = AuthorForm(request.POST)
+        form = CustomerForm(request.POST)
+        print form.as_p()
+        if form.is_valid():
+            print "Validated"
+            name = form.cleaned_data['name']
+            address = form.cleaned_data['address']
+            email = form.cleaned_data['email']
+            phone= form.cleaned_data['phone']
+            #title = form.cleaned_data['title']
+            #birth_date = form.cleaned_data['birth_date']
+            #author = Author.objects.create(name=name, title=title, birth_date=birth_date)
+            #author.save()
+            
+            #form = modelform_factory(Book, from=BookForm, fields=('name'))
+            
+    return render_to_response("home/temp.html", {'form': form}, context_instance=RequestContext(request))

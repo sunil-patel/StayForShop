@@ -2,7 +2,15 @@
 
 {% block content %}
 
-<h2>Men Shoes Categories :</h2>
+<h2>
+{% if MainCat %}
+ 	{{ MainCat|capfirst }} --> 
+{% endif %}
+{% if SubCat %}
+ 	{{ SubCat|capfirst }}
+{% endif %} 
+
+ </h2>
 	<div >
 		
 		<!-- div id="csl_shoes" class="shoes-category">
@@ -15,6 +23,9 @@
 		</div-->
 		{% if Categories %}
 			{% for subCategory in Categories %}
+				{% if " " in subCategory.CategoryName %}
+					
+				{% endif %} 
 			 	<a href="{{ subCategory.CategoryName|lower }}">
 			 		<div class="shoes-category">{{ subCategory.CategoryName }}
 			 		<img alt="" src="{% url 'home' %}statics/{{ subCategory.Picture }}" width="150" height="180">

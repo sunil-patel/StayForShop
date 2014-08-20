@@ -4,17 +4,26 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
+'''
+    #url(r'^men/shoes/$', 'StayForShop.views.showMenShoes', name="shoes"),
+    #url(r'^men/bags/$', 'StayForShop.views.showMenShoes', name="bags"),
+    '''
 urlpatterns = patterns ('',
     # Examples:
     url(r'^$', 'StayForShop.views.home', name='home'),
     url(r'^user/', include('Users.urls')),
-    url(r'^products/t-shirt/$', 'product.views.product_info', name='products'),
+    url(r'^products/', include('product.urls')),
+    #url(r'^products/t-shirt/$', 'product.views.product_info'),
+    
+    url(r'^test/$', 'StayForShop.views.test_form', name="test_form"),
+    url(r'^test/save$', 'StayForShop.views.test_form_save', name="test_form_save"),
+     
     url(r'^cart/$', 'cart.views.cart_details', name="cart"),
     url(r'^payment/', include('paypal.urls')),
     url(r'^checkout/$', 'StayForShop.views.paypal', name='checkout'),
-    url(r'^(?P<mainCategory>\w*?)/((?P<category>\w*?)/)?$', 'StayForShop.views.showCategory'),
-    #url(r'^men/shoes/$', 'StayForShop.views.showMenShoes', name="shoes"),
-    #url(r'^men/bags/$', 'StayForShop.views.showMenShoes', name="bags"),
+    
+    #url(r'^(?P<mainCategory>\w*?)/((?P<category>\w*?)/)?$', 'product.views.showCategory'),
+    
     
     #url(r'^checkout/', include('paypal_express_checkout.urls')),
     
