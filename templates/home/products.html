@@ -31,7 +31,9 @@
 		</div>
 		<div class="prod_info">
 			<br><input class="shiny-button" type="button" name="btn_buy" value="BUY NOW" /><br><br>
-			<br><input class="shiny-button" type="button" name="btn_atc" value="Add TO CART"/>
+			<form action="{% url 'home' %}cart/" method="POST">
+				<br><input class="shiny-button" type="submit" name="btn_atc" value="Add TO CART"/>
+			</form>
 		</div>
 	{% endif %}
 

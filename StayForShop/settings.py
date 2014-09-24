@@ -4,8 +4,8 @@ import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-BASE_DIR = os.path.dirname(os.path.realpath("StayForShop"))
-
+#BASE_DIR = os.path.dirname(os.path.realpath("StayForShop"))
+BASE_DIR = "D:\Sunil\Python"
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )

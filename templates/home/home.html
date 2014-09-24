@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta http-equiv="X-UA-Compatible" content="IE=9" />
 	<!-- script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script-->
 	<!-- script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js" type="text/javascript"></script-->
   <!-- script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/additional-methods.js" type="text/javascript"></script-->
@@ -162,7 +163,13 @@
 	                }
 				});
 			});*/
-			
+			$("#qty_chg").click(function() {
+				if($("#itm_qty").is(':visible'))
+				{
+					$("#itm_qty").css("visibility", "hidden");
+				}
+				$("#combo_qty").css("visibility", "visible");
+			});
         });
 		
 		/* Image resize */
@@ -176,14 +183,10 @@
 
     </script>
     
-    
-    
-<script></script>
     <title>{% block title %}Stay For Shop{% endblock %}</title>
 </head>
 <body>
 {% block header %}
-
 <table width="100%"><tr><td>
 <div>
 	<div style="float:left;">

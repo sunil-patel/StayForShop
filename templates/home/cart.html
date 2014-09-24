@@ -1,23 +1,23 @@
-<html>
-<head>
-</head>
-<body>
-<h1>Stay For Shop</h1><br>
-<H3>T-Shirt</H3>
-<p>Polo T-Shirt</p>
-This is the product with good material and feel comfort.<br>
-<b>Price : Rs. 1000</b><br>
-<b>Size : XL</b>
-<table>
-<tr>
-	<td><img src="" width="100" height="100" /></td>
-	<td>Item : Polo T-shirt</td>
-	<td>Size : XL</td>
-	<td>No of Item : 1</td>
-	<td>Price : 1000</td>
-</tr>
-</table>
-<h2><a href="">Place Order</a></h2>
-<a href="">Back to Home</a>
-</body>
-</html>
+{% extends "home/home.html" %}
+
+{% block content %}
+<a href=""><div class="cart_cnt_shp"></div><div style="margin-top:21px; float:left;">Continue Shopping</div></a>
+<div class="cart_heading">YOUR SHIPPING CART</div>
+<div class="cart_line"><hr /></div>
+<div style="float:left;margin-right:20px;"><img src="" width="140" height="160"></div>
+<div style="">Brand Name<br>Item Short Description</div>
+<div style="margin-top:10px; float:left;"> COLOR :&nbsp;&nbsp;</div>
+<div style="float:left;"><em style="border:1px solid #000000;margin-top:12px;width:10px; height:10px; float:left; background-color: RED" title="Olive"></em></div>
+<div style="margin-top:10px; float:left;">&nbsp;&nbsp;SIZE(UK/INDIAN) :</div><div style="margin-top:10px; float:left;">&nbsp;9</div>
+<div style="margin-top:10px; float:left;">&nbsp;&nbsp;QUANTITY :</div><div id="itm_qty" style="margin-top:10px; float:left;">&nbsp;1</div>
+<div id="qty_div" style="margin-top:10px; float:left;">
+	<select id="combo_qty" style="visibility:hidden">
+		<option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
+		<option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+		<option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option>
+		<option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
+		<option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option>
+	</select>
+</div>
+<div id="qty_chg" style="margin-top:10px; float:left; cursor: pointer;">&nbsp;&nbsp;<u>Change</u></div>
+{% endblock %}
